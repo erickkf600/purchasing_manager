@@ -52,6 +52,14 @@ export const Button = styled.View`
     align-items: center;
     margin: 0 20px;
 `;
+export const Input = styled.TextInput`
+    width: 100%;
+    height: 50px;
+    border-radius: 5px;
+    background: #fff;
+    padding: 0 10px
+
+`;
 
 export const Checkbox = styled.View`
     width: 30px;

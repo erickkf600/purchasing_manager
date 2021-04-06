@@ -1,12 +1,15 @@
-import React from 'react'
-import { Container, H1, Ul, Li, Text, Checkbox, Span, Button, Total } from './cart.style'
+import React, { useState, useEffect } from "react";
+import { Container, H1, Ul, Li, Text, Checkbox, Span, Button, Total, Input } from './cart.style'
 import { TouchableWithoutFeedback, View } from "react-native"
 import { SafeAreaView, ScrollView } from 'react-native'
 import { CustomIcon } from './../../assets/Icons/Icons'
 import{ useActiveIndex } from './../../providers/routeContext'
 import realmList from './../../OfflineFirst/Services/ListService'
+import { Currency } from './../../components/utils/index'
 const Cart = () =>{
     const { list, setCartList } = useActiveIndex()
+    const [search, setSearch] = useState("")
+    const [filteredItems, setFilteredItems] = useState([]);
 
     const deleteList = async (data) =>{
         const realm = await realmList();
@@ -25,6 +28,13 @@ const Cart = () =>{
     let total = list.reduce((acc, {value}) =>{
        return acc + Number(value.replace(',', '.'))
     },0)
+    useEffect(() => {
+        setFilteredItems(
+            list.filter((item) =>
+            item.product.toLowerCase().includes(search.toLowerCase())
+          )
+        );
+      }, [search, list])
     return (
         <SafeAreaView>
             <ScrollView>
@@ -32,10 +42,14 @@ const Cart = () =>{
                     
                 <H1>Carrinho de Compras</H1>
 
-                    <Total>Total: R$ {total}</Total>
+                <Input
+                    onChangeText={(e) => setSearch(e)}
+                    placeholder="Pesquisar..."
+                />
+                    <Total>Total: {Currency(total, 'R$')}</Total>
                     <Ul>
                     
-                    {list.map((item, i) => (
+                    {filteredItems.map((item, i) => (
                     <TouchableWithoutFeedback key={i} onPress={() => alert('teste1')}>
                     <Li>
                         <Span>
