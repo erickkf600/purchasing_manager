@@ -53,7 +53,7 @@ npm run ios
 
 Aqui estão as libs que foram utilizadas neste projeto:
 
-* [react-hook-form `<@hookform/resolvers & yup>`](https://react-hook-form.com)
+* [react-hook-form `<@hookform/resolvers & yup>`](https://necolas.github.io/normalize.css/)
 * [realm `<Banco de dados local>`](https://realm.io/)
 * [styled-components](https://styled-components.com/)
 * [react-native-actions-sheet](https://www.npmjs.com/package/react-native-actions-sheet)

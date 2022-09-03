@@ -14,6 +14,15 @@ export const H1 = styled.Text`
     margin: 20px auto;
 `;
 
+export const Input = styled.TextInput`
+    width: 100%;
+    height: 50px;
+    border-radius: 5px;
+    background: #fff;
+    padding: 0 10px;
+
+`;
+
 export const Ul = styled.View``;
 
 export const Li = styled.View`
